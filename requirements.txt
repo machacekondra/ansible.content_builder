@@ -7,3 +7,4 @@ boto3
 baron
 redbaron
 autoflake
+ruamel.yaml

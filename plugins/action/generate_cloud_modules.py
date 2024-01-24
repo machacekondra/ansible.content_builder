@@ -185,7 +185,7 @@ class Description:
             module_name = mapping[resource_name]
         except KeyError:
             print(f"No mapping for {resource_name}")
-            raise
+            return ""
 
         if f"must be an identifier for the resource type: {resource_name}" in my_string:
             return my_string.replace(
@@ -1272,7 +1272,7 @@ def generate_amazon_cloud(args: Iterable, role_path: str):
 def generate_vmware_rest(args: Iterable, role_path: str):
     module_list = []
 
-    for json_file in ["vcenter.json", "content.json", "appliance.json"]:
+    for json_file in ["vcenter.json"]: #, "content.json", "appliance.json"]:
         print("Generating modules from {}".format(json_file))
         api_spec_file = pathlib.Path(args.get("schema_dir") + "/" + json_file)
         raw_content = api_spec_file.read_text()
